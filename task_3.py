@@ -33,5 +33,9 @@ import re
 
 def format_phone_number(text):
     # ваше решение:
-
-    return "Fail!"
+    text = text.replace("+","").replace(" ","").replace("-","").replace("(","").replace(")","")
+    if re.fullmatch("\d{10}",text):
+        return f"+7 {text[:3]} {text[3:6]}-{text[6:8]}-{text[8:]}"
+    elif re.fullmatch("\d{11}",text) and re.fullmatch("[78]",text[0]):
+        return f"+7 {text[1:4]} {text[4:7]}-{text[7:9]}-{text[9:]}"
+    else: return "Fail!"

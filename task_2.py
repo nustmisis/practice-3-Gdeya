@@ -22,5 +22,12 @@ import re
 
 def get_plate_type(plate):
     # ваше решение:
-
-    return "Fail!"
+    if re.fullmatch(r"[авекмнорстух]\d{3}[авекмнорстух]{2} \d{2}",plate):
+        return "1А"
+    elif re.fullmatch(r"[авекмнорстух]{2}\d{3} \d{2}",plate):
+        return "1Б"
+    elif re.fullmatch(r"[авекмнорстух]{2}\d{4} \d{2}",plate):
+        return "2"
+    elif re.fullmatch(r"\d{4}[авекмнорстух]{2} \d{2}",plate):
+        return "3"
+    else: return "Fail!"
